@@ -7,6 +7,4 @@ router.post('/initializePayment', initializePayment);
 
 router.get('/verifyPayment/:ref', verifyPayment);
 
-router.post('/pay', verifyPayment);
-
 module.exports = router;

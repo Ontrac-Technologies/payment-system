@@ -1,16 +1,5 @@
 const axios = require('axios');
-const { initializePayment } = require('../utils/paystack');
 require('dotenv').config();
-
-exports.takePayment = async (req, res) => {
-  const { amount, email, fullName } = req.body;
-  const data = {
-    fullName,
-    email,
-    amount: amount * 100
-  };
-  // const result =
-};
 
 exports.initializePayment = async (req, res) => {
   const { email, amount } = req.body;
@@ -35,8 +24,7 @@ exports.initializePayment = async (req, res) => {
 exports.verifyPayment = async (req, res) => {
   const { ref } = req.params;
   const secretKey = `BEARER ${process.env.PAYSTACK_SK_KEY}`;
-  const url =
-    'https://api.paystack.co/transaction/verify/' + encodeURIComponent(ref);
+  const url = `https://api.paystack.co/transaction/verify/${ref}`;
   const headers = {
     authorization: secretKey
   };
